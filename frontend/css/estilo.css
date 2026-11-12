@@ -262,25 +262,74 @@ body {
 .action-btn .material-symbols-outlined { font-size: 28px; color: var(--color-green-light); }
 .action-btn:hover { border-color: var(--color-green-light); background-color: rgba(11, 107, 64, 0.02); color: var(--color-green-dark); }
 
-/* ==========================================================================
-   Responsividade Global
-   ========================================================================== */
+/* ========================================== */
+/* RESPONSIVIDADE - CELULARES E TABLETS       */
+/* ========================================== */
 @media (max-width: 768px) {
-    /* Login */
-    .login-container { flex-direction: column; height: auto; max-width: 400px; margin: 20px; }
-    .login-banner { padding: 40px 24px; }
-    .shape-1, .shape-2 { display: none; }
-    .login-form-section { padding: 40px 24px; }
-    
-    /* Dashboard */
-    .sidebar { width: 80px; }
-    .sidebar-header h2, .sidebar-nav li a span:not(.material-symbols-outlined), .logout-btn span:not(.material-symbols-outlined) { display: none; }
-    .sidebar-nav li a { justify-content: center; padding: 14px 0; }
-    .search-bar { width: 200px; }
-}
+    /* 1. O layout que era lado a lado (Menu + Conteúdo) fica em pé (Coluna) */
+    body {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+    }
 
-@media (max-width: 480px) {
-    .top-header { padding: 0 16px; }
-    .search-bar { display: none; } /* Esconde a busca em telas muito pequenas */
-    .dashboard-content { padding: 16px; }
+    /* 2. O Menu Lateral vai para o topo, ocupa 100% da largura e não fica fixo ao lado */
+    .sidebar {
+        width: 100% !important;
+        height: auto !important;
+        min-height: auto !important;
+        position: relative !important;
+        padding: 16px !important;
+    }
+
+    /* 3. O Conteúdo Principal ocupa a largura toda, sem a margem deixada pelo menu */
+    .main-content {
+        margin-left: 0 !important;
+        width: 100% !important;
+        padding: 16px !important;
+    }
+
+    /* 4. Títulos e botões principais (Ex: "+ Novo Aluno") ficam empilhados */
+    .page-header {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 16px;
+    }
+    
+    /* O botão principal ocupa toda a largura da tela no celular */
+    .page-header button {
+        width: 100%;
+    }
+
+    /* 5. Dashboard: Cartões de estatísticas ficam 1 por linha */
+    .stats-grid, .actions-grid {
+        grid-template-columns: 1fr !important;
+        gap: 16px !important;
+    }
+
+    /* 6. Ajuste dos Modais (Janelas de Cadastro) */
+    div[id^="modal"] > div {
+        width: 95% !important;
+        padding: 20px !important;
+        max-height: 90vh;
+        overflow-y: auto; /* Cria rolagem interna se o formulário for muito grande */
+    }
+
+    /* Campos que ficavam lado a lado nos modais passam a ficar um embaixo do outro */
+    form > div[style*="display: flex"] {
+        flex-direction: column !important;
+        gap: 16px !important;
+    }
+
+    /* 7. SOLUÇÃO MÁGICA PARA AS TABELAS NÃO QUEBRAREM A TELA */
+    /* Obriga a tabela a manter no mínimo 800px para não espremer o texto */
+    table {
+        min-width: 800px !important; 
+    }
+    
+    /* Pega as caixas brancas onde as tabelas estão dentro e permite rolar para o lado (arrastar com o dedo) */
+    div[style*="background: white"] {
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch; /* Rolagem suave nos telemóveis */
+    }
 }

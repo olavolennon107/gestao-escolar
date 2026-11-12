@@ -1,4 +1,4 @@
-<aside class="sidebar">
+<div class="sidebar">
     <div class="sidebar-header">
         <div class="logo-icon-small"></div>
         <h2>Escola Brasil</h2>
@@ -31,9 +31,8 @@
     </nav>
 
     <div class="sidebar-footer">
-        <!-- O botão de sair agora aponta de volta para o login.php -->
-        <a href="login.php" class="logout-btn">
+        <a href="logout.php" class="logout-btn">
             <span class="material-symbols-outlined">logout</span> Sair do Sistema
         </a>
     </div>
-</aside>
+</div>

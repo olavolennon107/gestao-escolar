@@ -15,6 +15,44 @@ session_start();
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* Teste de Responsividade Forçada */
+        @media (max-width: 768px) {
+            body { flex-direction: column !important; }
+            
+            /* Se a sua div principal não tiver a classe .app-container, isso força pelo layout */
+            body > div:first-of-type { 
+                display: flex !important; 
+                flex-direction: column !important; 
+            }
+
+            .sidebar {
+                width: 100% !important;
+                position: relative !important;
+                min-height: auto !important;
+                height: auto !important;
+                padding: 20px !important;
+            }
+
+            .main-content {
+                width: 100% !important;
+                margin-left: 0 !important;
+                padding: 15px !important;
+            }
+
+            .page-header {
+                flex-direction: column !important;
+                align-items: stretch !important;
+                gap: 15px !important;
+            }
+
+            .stats-grid, .actions-grid {
+                display: grid !important;
+                grid-template-columns: 1fr !important;
+            }
+        }
+    </style>
 </head>
 <body>
 
@@ -71,6 +109,7 @@ session_start();
         </div>
 
     </div> <!-- Fim do login-page-wrapper -->
+
 
 </body>
 </html>
